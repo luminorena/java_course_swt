@@ -18,13 +18,14 @@ public class Point {
        появляются лишние строчки кода, что по задаче, в принципе, лишнее
        System.out.println(rez);
         */
-        return rez;
+       return rez;
+        //System.out.println(rez);
     }
 
     public static void main(String[] args) {
         Point p1 = new Point(2, 2);
         Point p2 = new Point(1, 3);
         System.out.println(distance(p1, p2));
-        //distance(p1, p2);
+       // distance(p1, p2);
     }
 }
