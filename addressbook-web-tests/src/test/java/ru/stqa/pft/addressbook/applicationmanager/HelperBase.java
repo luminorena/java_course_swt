@@ -14,7 +14,6 @@ public class HelperBase {
 
     protected void click(By Locator) {
         wd.findElement(Locator).click();
-        //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
     protected void type(By Locator, String text) {
