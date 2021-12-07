@@ -26,7 +26,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("email"), contactData.getEmail());
     }
 
-    public void selectContactForDeletion(){
+    public void selectContacts(){
         click(By.name("selected[]"));
     }
 
@@ -35,5 +35,11 @@ public class ContactHelper extends HelperBase {
     }
 
 
+    public void editContact() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
 
+    public void submitContactModification() {
+        click(By.name("update"));
+    }
 }
