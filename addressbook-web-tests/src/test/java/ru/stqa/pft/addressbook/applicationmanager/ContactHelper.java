@@ -1,8 +1,10 @@
 package ru.stqa.pft.addressbook.applicationmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -20,12 +22,23 @@ public class ContactHelper extends HelperBase {
         click(By.name("theform"));
     }
 
-    public void fillContactsForm(ContactData contactData) {
+    public void fillContactsForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("home"), contactData.getHomephone());
         type(By.name("email"), contactData.getEmail());
+
+        // как выбрать элемент из выпадающего списка
+        // selenium.support.ui - import
+        // если выполняется creation, то заполняем значением, если нет, то проверяем, что ничего нет
+        if (creation){
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+
     }
+
 
     public void selectContacts(){
         click(By.name("selected[]"));

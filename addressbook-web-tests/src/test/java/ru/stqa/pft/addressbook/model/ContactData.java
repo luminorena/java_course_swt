@@ -12,6 +12,7 @@ public class ContactData {
         this.lastname = lastname;
         this.homephone = homephone;
         this.email = email;
+        this.group = group;
 
     }
 
