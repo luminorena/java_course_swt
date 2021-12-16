@@ -31,7 +31,7 @@ public class ContactHelper extends HelperBase {
         // как выбрать элемент из выпадающего списка
         // selenium.support.ui - import
         // если выполняется creation, то заполняем значением, если нет, то проверяем, что ничего нет
-        if (creation){
+       if (creation){
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -55,5 +55,15 @@ public class ContactHelper extends HelperBase {
 
     public void submitContactModification() {
         click(By.name("update"));
+    }
+
+    public void createContact(ContactData contact) {
+        fillContactsForm(contact, true);
+        submitContactsCreation();
+    }
+
+    public boolean isThereAnyContact() {
+        return isElementPresent(By.name("selected[]"));
+
     }
 }
