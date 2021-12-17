@@ -25,8 +25,10 @@ public class NavigationHelper extends HelperBase {
                 && isElementPresent(By.name("new"))) {
             return;
         }
-        click(By.linkText("add new"));
+
     }
+
+
 
     public void gotoHomePage() {
         if (isElementPresent(By.id("maintable"))){

@@ -56,10 +56,15 @@ public class ContactHelper extends HelperBase {
     public void submitContactModification() {
         click(By.name("update"));
     }
+    private void initContactCreation() {
+        click(By.linkText("add new"));
+    }
 
     public void createContact(ContactData contact) {
+        initContactCreation();
         fillContactsForm(contact, true);
         submitContactsCreation();
+        returnToHomePage();
     }
 
     public boolean isThereAnyContact() {
