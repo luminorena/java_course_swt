@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.applicationmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -19,7 +18,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void submitContactsCreation() {
-        click(By.name("theform"));
+        click(By.name("submit"));
     }
 
     public void fillContactsForm(ContactData contactData, boolean creation) {
