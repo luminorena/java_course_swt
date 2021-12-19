@@ -31,7 +31,7 @@ public class ContactHelper extends HelperBase {
         // selenium.support.ui - import
         // если выполняется creation, то заполняем значением, если нет, то проверяем, что ничего нет
        if (creation){
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
