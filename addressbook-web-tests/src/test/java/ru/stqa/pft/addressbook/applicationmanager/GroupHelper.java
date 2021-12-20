@@ -39,7 +39,7 @@ public class GroupHelper extends HelperBase {
     public void selectGroup() {
 
         click(By.name("selected[]"));
-
+        //new Select(wd.findElement(By.name("selected[]"))).selectByIndex(0);
     }
 
 
@@ -57,9 +57,7 @@ public class GroupHelper extends HelperBase {
         submitGroupCreation();
         returnToGroupPage();
     }
-
-    public boolean isThereAGroup() {
+    public boolean isThereAGroup(){
         return isElementPresent(By.name("selected[]"));
-
     }
 }
