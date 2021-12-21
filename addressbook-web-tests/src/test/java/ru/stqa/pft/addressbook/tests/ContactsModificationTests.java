@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -15,5 +16,6 @@ public class ContactsModificationTests extends TestBase{
         app.getContactHelper().editContact();
         app.getContactHelper().fillContactsForm(new ContactData("Olga", "B", "123-456", "olga@olga.ru", null), false);
         app.getContactHelper().submitContactModification();
+
     }
 }
