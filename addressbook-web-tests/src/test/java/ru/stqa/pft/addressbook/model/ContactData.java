@@ -7,14 +7,14 @@ public class ContactData {
     private final String lastname;
     private final String homephone;
     private final String email;
-    private String group;
 
-    public ContactData(String firstname, String lastname, String homephone, String email, String group) {
+
+    public ContactData(String firstname, String lastname, String homephone, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.homephone = homephone;
         this.email = email;
-        this.group = group;
+
 
     }
 
@@ -34,9 +34,6 @@ public class ContactData {
         return email;
     }
 
-    public String getGroup() {
-        return group;
-    }
 
     @Override
     public String toString() {
@@ -45,7 +42,6 @@ public class ContactData {
                 ", lastname='" + lastname + '\'' +
                 ", homephone='" + homephone + '\'' +
                 ", email='" + email + '\'' +
-                ", group='" + group + '\'' +
                 '}';
     }
 
@@ -54,11 +50,11 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(homephone, that.homephone) && Objects.equals(email, that.email) && Objects.equals(group, that.group);
+        return Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(homephone, that.homephone) && Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstname, lastname, homephone, email, group);
+        return Objects.hash(firstname, lastname, homephone, email);
     }
 }
