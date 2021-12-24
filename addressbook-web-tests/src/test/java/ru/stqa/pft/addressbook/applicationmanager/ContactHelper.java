@@ -42,10 +42,12 @@ public class ContactHelper extends HelperBase {
         }
 
     }
+    public void closeAlert(){
+        wd.switchTo().alert().accept();
+    }
 
-
-    public void selectContacts(){
-        click(By.name("selected[]"));
+    public void selectContacts(int index){
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void deleteSelectedContact() {
