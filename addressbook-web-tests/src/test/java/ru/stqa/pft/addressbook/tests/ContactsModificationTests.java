@@ -13,7 +13,7 @@ public class ContactsModificationTests extends TestBase{
     public void ContactModification(){
         if (!app.getContactHelper().isThereAnyContact()){
             app.getNavigationHelper().gotoContactPage();
-            app.getContactHelper().createContact(new ContactData("Olga", "B", "B", "olga@olga.ru", "1@gmail.com"));
+            app.getContactHelper().createContact(new ContactData(1, "B", "B", "olga@olga.ru", "1@gmail.com"));
         }
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContacts(before.size());
