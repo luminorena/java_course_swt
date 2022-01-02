@@ -20,7 +20,7 @@ public class ContactsModificationTests extends TestBase{
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContacts(before.size());
         app.getContactHelper().editContact();
-        ContactData contact = new ContactData(before.get(before.size()-1).getId(), "B", "O", "olga@olga.ru", "1@gmail.com");
+        ContactData contact = new ContactData(before.get(before.size()-1).getId(), "B", "0", "olga@olga.ru", "1@gmail.com");
         app.getContactHelper().fillContactsForm(contact, false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().gotoHomePage();
