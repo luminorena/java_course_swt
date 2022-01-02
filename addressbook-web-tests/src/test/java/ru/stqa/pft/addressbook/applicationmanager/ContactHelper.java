@@ -3,10 +3,7 @@ package ru.stqa.pft.addressbook.applicationmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +23,7 @@ public class ContactHelper extends HelperBase {
         click(By.name("submit"));
     }
 
-    public void fillContactsForm(ContactData contactData, boolean creation) {
+    public void fillContactsForm(ContactData contactData) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("home"), contactData.getHomephone());
@@ -35,11 +32,7 @@ public class ContactHelper extends HelperBase {
         // как выбрать элемент из выпадающего списка
         // selenium.support.ui - import
         // если выполняется creation, то заполняем значением, если нет, то проверяем, что ничего нет
-       if (creation){
-            new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
-        } else {
-            Assert.assertFalse(isElementPresent(By.name("new_group")));
-        }
+
 
     }
     public void closeAlert(){
@@ -68,7 +61,7 @@ public class ContactHelper extends HelperBase {
 
     public void createContact(ContactData contact) {
         initContactCreation();
-        fillContactsForm(contact, true);
+        fillContactsForm(contact);
         submitContactsCreation();
         returnToHomePage();
     }
