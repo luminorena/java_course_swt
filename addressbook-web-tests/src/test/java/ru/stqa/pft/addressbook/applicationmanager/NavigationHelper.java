@@ -25,7 +25,7 @@ public class NavigationHelper extends HelperBase {
                 && isElementPresent(By.name("new"))) {
             return;
         }
-
+        click(By.linkText("home"));
     }
 
 
