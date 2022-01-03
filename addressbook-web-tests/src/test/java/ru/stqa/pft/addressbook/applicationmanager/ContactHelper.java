@@ -35,16 +35,17 @@ public class ContactHelper extends HelperBase {
 
 
     }
-    public void closeAlert(){
-        wd.switchTo().alert().accept();
-    }
+
 
     public void selectContacts(int index){
-        wd.findElements(By.name("selected[]")).get(index-1).click();
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void deleteSelectedContact() {
+
         click (By.xpath("//input[@value='Delete']"));
+        wd.switchTo().alert().accept();
+
     }
 
 
