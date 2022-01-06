@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -38,9 +40,9 @@ public class ContactHelper extends HelperBase {
 
 
     public void selectContacts(int index){
-        //click (By.name("selected[]"));
         wd.findElements(By.name("selected[]")).get(index).click();
     }
+
 
     public void deleteSelectedContact() {
 
@@ -53,6 +55,11 @@ public class ContactHelper extends HelperBase {
     public void editContact(int index) {
         wd.findElements(By.xpath("//img[@alt='Edit']")).get(index-1).click();
     }
+    public void selectContactById(int id){
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
+
 
     public void submitContactModification() {
         click(By.name("update"));
@@ -67,14 +74,16 @@ public class ContactHelper extends HelperBase {
         submitContactsCreation();
         returnToHomePage();
     }
-    public void modify(List<ContactData> before, ContactData contact) {
-        editContact(before.size());
+    public void modify(ContactData contact) {
+        //selectContactById(contact.getId());
+        editContact(contact.getId());
         fillContactsForm(contact);
         submitContactModification();
 
     }
-    public void delete(int index) {
-       selectContacts(index);
+
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
         deleteSelectedContact();
     }
     public boolean isThereAnyContact() {
@@ -82,8 +91,8 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements){
             String firstName = element.getText();
@@ -92,4 +101,6 @@ public class ContactHelper extends HelperBase {
         }
         return contacts;
     }
+
+
 }

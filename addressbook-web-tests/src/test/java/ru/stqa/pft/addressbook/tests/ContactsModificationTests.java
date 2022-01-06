@@ -8,11 +8,12 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactsModificationTests extends TestBase{
     @BeforeMethod
     public void ensurePreconditions(){
-        if (app.contact().list().size() == 0){
+        if (app.contact().all().size() == 0){
             app.goTo().ContactPage();
             app.contact().create(new ContactData().withFirstname("B"));
         }
@@ -20,23 +21,15 @@ public class ContactsModificationTests extends TestBase{
     @Test
 
     public void ContactModification(){
-        List<ContactData> before = app.contact().list();
-        int index = before.size()-1;
-        ContactData contact = new ContactData().withId(before.get(index).getId()).withLastname("B").withFirstname("B").withHomephone("123").withEmail("olga@olga.ru");
-        app.contact().modify(before, contact);
+        Set<ContactData> before = app.contact().all();
+        ContactData modifiedContact = before.iterator().next();
+        ContactData contact = new ContactData().withId(modifiedContact.getId()).withLastname("B").withFirstname("B").withHomephone("123").withEmail("olga@olga.ru");
+        app.contact().modify(contact);
         app.goTo().gotoHomePage();
-        List<ContactData> after = app.contact().list();
+        Set<ContactData> after = app.contact().all();
         Assert.assertEquals(after.size(), before.size());
-        before.remove(index);
+        before.remove(modifiedContact);
         before.add(contact);
-        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
-        Comparator<? super ContactData> byFirstName = (f1, f2) -> String.CASE_INSENSITIVE_ORDER.compare(f1.getFirstname(), f2.getFirstname());
-        before.sort(byFirstName);
-        after.sort(byFirstName);
-        Assert.assertEquals(before, after);
-        Comparator<? super ContactData> byLastName = (l1, l2) -> String.CASE_INSENSITIVE_ORDER.compare(l1.getLastname(), l2.getLastname());
-        before.sort(byLastName);
-        after.sort(byLastName);
         Assert.assertEquals(before, after);
 
     }
