@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class GroupModificationTests extends TestBase{
-    @Test (enabled = false)
+    @Test
 
     public void testGroupModification(){
         app.getNavigationHelper().gotoGroupPage();

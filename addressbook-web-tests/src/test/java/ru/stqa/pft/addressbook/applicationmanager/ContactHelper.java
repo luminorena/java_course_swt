@@ -33,11 +33,22 @@ public class ContactHelper extends HelperBase {
         // selenium.support.ui - import
         // если выполняется creation, то заполняем значением, если нет, то проверяем, что ничего нет
 
-
+    }
+    public int findMaxId (){
+        List<ContactData> after = getContactList();
+        int max = 0;
+        for (ContactData c: after){
+            if (c.getId() > max){
+                max = c.getId();
+            }
+        }
+        return max;
     }
 
-
     public void selectContacts(int index){
+        wd.findElements(By.name("selected[]")).get(index).click();
+    }
+    public void selectContactsForModification(int index){
         wd.findElements(By.name("selected[]")).get(index-1).click();
     }
 
@@ -50,6 +61,7 @@ public class ContactHelper extends HelperBase {
 
 
     public void editContact() {
+
         click(By.xpath("//img[@alt='Edit']"));
     }
 
@@ -77,8 +89,9 @@ public class ContactHelper extends HelperBase {
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements){
             String firstName = element.getText();
+            String lastName = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(1, "B", "0", null, null);
+            ContactData contact = new ContactData(id, firstName,lastName ,null, null);
             contacts.add(contact);
         }
         return contacts;
