@@ -32,16 +32,18 @@ public class GroupData {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
+    @Override
     public String toString() {
         return "GroupData{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
+
     public GroupData withName(String name) {
         this.name = name;
         return this;
