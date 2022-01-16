@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -10,23 +11,24 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ContactsModificationTests extends TestBase{
-    @Test
-
-    public void ContactModification(){
+    @BeforeMethod
+    public void ensurePreconditions(){
         if (!app.getContactHelper().isThereAnyContact()){
             app.getNavigationHelper().gotoContactPage();
             app.getContactHelper().createContact(new ContactData(1, "B", "0", null, null));
         }
+    }
+    @Test
+
+    public void ContactModification(){
         List<ContactData> before = app.getContactHelper().getContactList();
-        //app.getContactHelper().selectContactsForModification(before.size());
-        app.getContactHelper().editContact();
-        ContactData contact = new ContactData(before.get(0).getId(), "B", "0", null, null);
-        app.getContactHelper().fillContactsForm(contact);
-        app.getContactHelper().submitContactModification();
+        ContactData index = before.get(0);
+        ContactData contact = new ContactData(index.getId(), "B", "0", null, null);
+        app.getContactHelper().modifyContact(contact);
         app.getNavigationHelper().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size());
-        before.remove(before.get(0));
+        before.remove(index);
         before.add(contact);
 
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
@@ -38,4 +40,6 @@ public class ContactsModificationTests extends TestBase{
         Assert.assertEquals(before, after);
 
     }
+
+
 }

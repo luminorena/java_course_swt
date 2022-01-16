@@ -49,10 +49,6 @@ public class ContactHelper extends HelperBase {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void selectContactsForModification(int index){
-        wd.findElements(By.name("selected[]")).get(index-1).click();
-    }
-
     public void deleteSelectedContact() {
 
         click (By.xpath("//input[@value='Delete']"));
@@ -78,6 +74,12 @@ public class ContactHelper extends HelperBase {
         fillContactsForm(contact);
         submitContactsCreation();
         returnToHomePage();
+    }
+    public void modifyContact(ContactData contact) {
+        editContact();
+        fillContactsForm(contact);
+        submitContactModification();
+
     }
 
     public boolean isThereAnyContact() {
