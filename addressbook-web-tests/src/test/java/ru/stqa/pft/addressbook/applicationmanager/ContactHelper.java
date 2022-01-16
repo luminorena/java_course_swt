@@ -35,7 +35,7 @@ public class ContactHelper extends HelperBase {
 
     }
     public int findMaxId (){
-        List<ContactData> after = getContactList();
+        List<ContactData> after = list();
         int max = 0;
         for (ContactData c: after){
             if (c.getId() > max){
@@ -69,25 +69,30 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void createContact(ContactData contact) {
+    public void create(ContactData contact) {
         initContactCreation();
         fillContactsForm(contact);
         submitContactsCreation();
         returnToHomePage();
     }
-    public void modifyContact(ContactData contact) {
+    public void modify(ContactData contact) {
         editContact();
         fillContactsForm(contact);
         submitContactModification();
 
     }
 
+    public void delete(int index) {
+        selectContacts(index);
+        deleteSelectedContact();
+
+    }
     public boolean isThereAnyContact() {
         return isElementPresent(By.name("selected[]"));
 
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
