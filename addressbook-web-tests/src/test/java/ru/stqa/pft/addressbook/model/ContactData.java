@@ -89,4 +89,11 @@ public class ContactData {
         return email;
     }
 
+    public String getMobilephone() {
+        return mobile;
+    }
+
+    public String getWorkphone() {
+        return work;
+    }
 }
