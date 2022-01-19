@@ -122,10 +122,11 @@ public class ContactHelper extends HelperBase {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             WebElement lastName = element.findElement(By.xpath(".//td[2]"));
             WebElement firstName = element.findElement(By.xpath(".//td[3]"));
+            String address = element.findElement(By.xpath(".//td[4]")).getText();
             String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
             contactCache.add(new ContactData().withId(id).withLastname(lastName.
-                    getText()).withFirstname(firstName.getText())
-                    .withAllPhones(allPhones));
+                            getText()).withFirstname(firstName.getText())
+                    .withAddress(address).withAllPhones(allPhones));
         }
 
         return new Contacts(contactCache);
@@ -135,12 +136,16 @@ public class ContactHelper extends HelperBase {
         initContactModificationById(contact.getId());
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
         String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String address = wd.findElement(By.name("address")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
         String work = wd.findElement(By.name("work")).getAttribute("value");
+
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstname(firstname)
-                .withLastname(lastname).withHomephone(home).withMobilephone(mobile).withWorkphone(work);
+                .withLastname(lastname).withAddress(address)
+                .withHomephone(home)
+                .withMobilephone(mobile).withWorkphone(work);
     }
     public void initContactModificationById(int id){
         wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();

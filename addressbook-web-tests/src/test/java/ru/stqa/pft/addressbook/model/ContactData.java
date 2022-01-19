@@ -8,6 +8,16 @@ public class ContactData {
     private String mobile;
     private String work;
     private String allPhones;
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
 
     public String getAllPhones() {
         return allPhones;
@@ -17,6 +27,7 @@ public class ContactData {
         this.allPhones = allPhones;
         return this;
     }
+
 
     public ContactData withId(int id) {
         this.id = id;
@@ -106,6 +117,7 @@ public class ContactData {
     public String getWorkphone() {
         return work;
     }
+
 
 
 }
