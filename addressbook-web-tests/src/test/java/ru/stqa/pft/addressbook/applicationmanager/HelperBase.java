@@ -6,6 +6,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.File;
+
 public class HelperBase {
 
     protected WebDriver wd;
@@ -32,6 +34,17 @@ public class HelperBase {
                 wd.findElement(Locator).sendKeys(text);
             }
     }
+    }
+    protected void attach(By Locator, File file) {
+
+        if (file != null) {
+            // если существует, находим элемент и вызываем метод
+            // getAttribute. Получаем значение поля ввода
+            String existingText = wd.findElement(Locator).getAttribute("value");
+            if (!file.equals(existingText)) {
+                wd.findElement(Locator).sendKeys(file.getAbsolutePath());
+            }
+        }
     }
     private boolean isAlertPresent() {
         try {
