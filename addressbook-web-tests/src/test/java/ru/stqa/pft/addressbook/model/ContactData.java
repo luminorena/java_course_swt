@@ -8,6 +8,7 @@ public class ContactData {
     private  String homephone;
     private String mobile;
     private String work;
+    private String fax;
     private String allPhones;
     private String address;
     private String email;
@@ -114,6 +115,10 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withFax(String fax) {
+        this.fax = fax;
+        return this;
+    }
 
 
 
@@ -155,6 +160,10 @@ public class ContactData {
 
     public String getWorkphone() {
         return work;
+    }
+
+    public String getFax() {
+        return fax;
     }
 
 
