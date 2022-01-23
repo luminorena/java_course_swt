@@ -1,0 +1,23 @@
+[
+  {
+    "firstname": "firstName 0",
+    "lastname": "lastName 0",
+    "homephone": "123-343",
+    "mobile": "3443",
+    "email": "1@gmail.com"
+  },
+  {
+    "firstname": "firstName 1",
+    "lastname": "lastName 1",
+    "homephone": "123-343",
+    "mobile": "3443",
+    "email": "1@gmail.com"
+  },
+  {
+    "firstname": "firstName 2",
+    "lastname": "lastName 2",
+    "homephone": "123-343",
+    "mobile": "3443",
+    "email": "1@gmail.com"
+  }
+]
