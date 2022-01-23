@@ -145,11 +145,13 @@ public class ContactHelper extends HelperBase {
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
         String work = wd.findElement(By.name("work")).getAttribute("value");
+        String secondaryPhone = wd.findElement(By.name("phone2")).getAttribute("value");
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstname(firstname)
                 .withLastname(lastname).withAddress(address)
                 .withHomephone(home)
-                .withMobilephone(mobile).withWorkphone(work);
+                .withMobilephone(mobile).withWorkphone(work)
+                .withSecondaryPhone(secondaryPhone);
 
     }
 
