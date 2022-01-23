@@ -20,7 +20,6 @@ public class ContactCreationTests extends TestBase {
         File photo = new File("src\\test\\resources\\testPict.png");
         ContactData contact = new ContactData().withLastname("B")
                 .withFirstname("B").withPhoto(photo);
-
         app.contact().create(contact);
         app.goTo().gotoHomePage();
         assertThat(app.contact().count(), equalTo(before.size() + 1));
