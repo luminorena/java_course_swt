@@ -61,14 +61,14 @@ public class ContactDataGenerator {
     }
 
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-       Writer writer = new FileWriter(file);
+         try (Writer writer = new FileWriter(file)) {
        for (ContactData contact: contacts){
            writer.write(String.format("%s;%s;%s;%s;%s\n",
                    contact.getFirstname(), contact.getLastname()
                    ,contact.getHomephone(), contact.getMobilephone()
                    , contact.getEmail()));
-       }
-       writer.close();
+       }}
+
     }
 
     private List<ContactData> generateContacts(int count) {
