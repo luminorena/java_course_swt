@@ -42,12 +42,13 @@ public class ApplicationManager {
 
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
-        properties.load(new FileReader((new File(String.format("src/test/resources/%s.properties", target)))));
+        properties.load(new FileReader((new File(String.format
+                ("src/test/resources/%s.properties", target)))));
         if (Objects.equals(browser, BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
-        }
+        } else wd = new FirefoxDriver();
 
         wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
