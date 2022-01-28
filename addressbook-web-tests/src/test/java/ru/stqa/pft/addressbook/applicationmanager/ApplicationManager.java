@@ -48,7 +48,7 @@ public class ApplicationManager {
             wd = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
-        } else wd = new FirefoxDriver();
+        } else wd = new ChromeDriver();
 
         wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
