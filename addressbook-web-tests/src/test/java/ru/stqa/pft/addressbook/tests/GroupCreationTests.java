@@ -39,11 +39,11 @@ public class GroupCreationTests extends TestBase {
     @Test(dataProvider = "validGroups")
     public void testGroupCreation(GroupData group)  {
         app.goTo().groupPage();
-        Groups before = app.group().all();
+        Groups before = app.db().groups();
         app.group().create(group);
         app.goTo().groupPage();
         assertThat(app.group().count(), equalTo(before.size() + 1));
-        Groups after = app.group().all();
+        Groups after = app.db().groups();
         group.withId(after.stream().max((Comparator<GroupData>) (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
         assertThat(after, equalTo(before.withAdded
                 (group.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
