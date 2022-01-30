@@ -4,7 +4,6 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>error</level>
         </filter>
-       <file>test-${bySecond}.log</file>
         <encoder>
             <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
         </encoder>

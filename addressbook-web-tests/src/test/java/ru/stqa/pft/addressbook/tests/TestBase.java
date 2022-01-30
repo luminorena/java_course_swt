@@ -31,10 +31,10 @@ public class TestBase {
 
     @BeforeMethod
     public void logTestStart(Method m, Object[] p){
-        logger.info("Start text "+ m.getName() + "with parameters " + Arrays.asList(p));
+        logger.error("Start text "+ m.getName() + "with parameters " + Arrays.asList(p));
     }
     @AfterMethod(alwaysRun = true)
     public void logTestStop(Method m, Object[] p){
-        logger.info("Stop text "+ m.getName() + "with parameters " + Arrays.asList(p));
+        logger.error("Stop text "+ m.getName() + "with parameters " + Arrays.asList(p));
     }
 }
