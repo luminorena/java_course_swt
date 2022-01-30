@@ -25,9 +25,7 @@ public class ContactAttributeTests extends TestBase{
                 equalTo(mergePhones(contactInfoFromEditForm)));
     }
     public String chooseAddresses(ContactData contact) {
-        return  Arrays.asList(contact.getAddress())
-                .stream().filter((s) -> ! s.equals(""))
-                .collect(Collectors.joining("\n"));
+        return contact.getAddress();
     }
 
     private String mergeEmails(ContactData contact) {
