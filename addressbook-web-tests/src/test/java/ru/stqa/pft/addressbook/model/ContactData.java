@@ -3,7 +3,6 @@ import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
@@ -40,13 +39,15 @@ public class ContactData {
     @Type(type="text")
     private String address;
     @Expose
+    @Transient
     @Column(name = "email")
     @Type(type="text")
     private String email;
+    @Transient
     @Column(name = "email2")
     @Type(type="text")
     private String email2;
-
+    @Transient
     @Column(name = "email3")
     @Type(type="text")
     private String email3;
@@ -69,6 +70,15 @@ public class ContactData {
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
         return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(homephone, that.homephone) && Objects.equals(mobile, that.mobile) && Objects.equals(work, that.work) && Objects.equals(secondaryPhone, that.secondaryPhone);
+    }
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", homephone='" + homephone + '\'' +
+                '}';
     }
 
     @Override
@@ -162,19 +172,6 @@ public class ContactData {
         return this;
     }
 
-
-
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", homephone='" + homephone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 
     public int getId() {
         return id;
