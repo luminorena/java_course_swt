@@ -69,7 +69,7 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(homephone, that.homephone) && Objects.equals(mobile, that.mobile) && Objects.equals(work, that.work) && Objects.equals(secondaryPhone, that.secondaryPhone);
+        return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(homephone, that.homephone);
     }
     @Override
     public String toString() {
