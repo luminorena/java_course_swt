@@ -16,16 +16,13 @@ public class ContactAttributeTests extends TestBase{
         ContactData contact = app.contact().all().iterator().next();
         ContactData infoFromAddress = app.contact().infoFromAddress(contact);
         assertThat(contact.getAddress(),
-                equalTo(chooseAddresses(infoFromAddress)));
+                equalTo(contact.getAddress()));
         ContactData infoFromEmail = app.contact().infoFromEmail(contact);
         assertThat(contact.getAllEmails(),
                 equalTo(mergeEmails(infoFromEmail)));
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
         assertThat(contact.getAllPhones(),
                 equalTo(mergePhones(contactInfoFromEditForm)));
-    }
-    public String chooseAddresses(ContactData contact) {
-        return contact.getAddress();
     }
 
     private String mergeEmails(ContactData contact) {
