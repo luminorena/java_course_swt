@@ -10,7 +10,7 @@ import java.io.File;
 
 public class HelperBase {
 
-    protected WebDriver wd;
+    protected static WebDriver wd;
 
     public HelperBase(WebDriver wd) {
         this.wd = wd;
