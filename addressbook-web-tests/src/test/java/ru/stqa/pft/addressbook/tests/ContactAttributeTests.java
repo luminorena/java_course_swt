@@ -14,12 +14,12 @@ public class ContactAttributeTests extends TestBase{
     public void testContactAttributes(){
         app.goTo().gotoHomePage();
         ContactData contact = app.contact().all().iterator().next();
-        ContactData infoFromAddress = app.contact().infoFromEditForm(contact);
-        assertThat(contact.getFirstname(),equalTo(contact.getFirstname()));
-        assertThat(contact.getLastname(), equalTo(contact.getLastname()));
-        assertThat(contact.getAddress(), equalTo(contact.getAddress()));
-        assertThat(contact.getAllEmails(), equalTo(contact.getAllEmails()));
-        assertThat(contact.getAllPhones(), equalTo(contact.getAllPhones()));
+        ContactData infoFromEditForm = app.contact().infoFromEditForm(contact);
+        assertThat(contact.getFirstname(),equalTo(infoFromEditForm.getFirstname()));
+        assertThat(contact.getLastname(), equalTo(infoFromEditForm.getLastname()));
+        assertThat(contact.getAddress(), equalTo(infoFromEditForm.getAddress()));
+        assertThat(contact.getAllEmails(), equalTo(mergeEmails(infoFromEditForm)));
+        assertThat(contact.getAllPhones(), equalTo(mergePhones(infoFromEditForm)));
     }
 
     private String mergeEmails(ContactData contact) {
