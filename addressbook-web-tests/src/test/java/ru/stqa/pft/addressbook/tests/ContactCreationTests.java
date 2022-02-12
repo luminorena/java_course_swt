@@ -38,11 +38,18 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation(ContactData contact) {
         app.goTo().contactPage();
         Contacts before = app.db().contacts();
+        ContactData newContact =
+                (ContactData) before.stream().map((c) -> new ContactData().withId(c.getId())
+                        .withLastname(c.getLastname())
+                        .withFirstname(c.getFirstname()));
         app.contact().create(contact);
         app.goTo().gotoHomePage();
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.db().contacts();
+        app.contact().fillContactsForm(newContact);
         contact.withId(after.stream().max((Comparator<ContactData>) (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+
+
         assertThat(after, equalTo(before.
                 withAdded(contact.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
         verifyContactListInUI();
