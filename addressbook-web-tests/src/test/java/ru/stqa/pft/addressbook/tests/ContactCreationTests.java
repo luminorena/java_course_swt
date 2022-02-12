@@ -45,6 +45,7 @@ public class ContactCreationTests extends TestBase {
         contact.withId(after.stream().max((Comparator<ContactData>) (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
         assertThat(after, equalTo(before.
                 withAdded(contact.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
+        verifyContactListInUI();
     }
     @Test (enabled = false)
     public void testCurrentDir(){
