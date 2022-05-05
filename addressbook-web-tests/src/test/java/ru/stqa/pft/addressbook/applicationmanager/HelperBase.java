@@ -23,8 +23,6 @@ public class HelperBase {
     protected void type(By Locator, String text) {
         click(Locator);
         if (text != null) {
-            // если существует, находим элемент и вызываем метод
-            // getAttribute. Получаем значение поля ввода
             String existingText = wd.findElement(Locator).getAttribute("value");
             if (!text.equals(existingText)) {
                 wd.findElement(Locator).clear();
@@ -38,8 +36,6 @@ public class HelperBase {
     protected void attach(By Locator, File file) {
 
         if (file != null) {
-            // если существует, находим элемент и вызываем метод
-            // getAttribute. Получаем значение поля ввода
             String existingText = wd.findElement(Locator).getAttribute("value");
             if (!file.equals(existingText)) {
                 wd.findElement(Locator).sendKeys(file.getAbsolutePath());
