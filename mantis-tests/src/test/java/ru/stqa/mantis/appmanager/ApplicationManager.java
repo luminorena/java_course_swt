@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
     private Properties properties;
     private WebDriver wd;
+    private MailHelper mailHelper;
 
 
     private String browser;
@@ -75,5 +76,11 @@ public class ApplicationManager {
             wd.get(properties.getProperty("web.baseUrl"));
         }
         return wd;
+    }
+    public MailHelper mail(){
+        if (mailHelper == null){
+            mailHelper = new MailHelper(this);
+        }
+        return mailHelper;
     }
 }

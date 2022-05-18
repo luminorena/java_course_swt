@@ -9,6 +9,12 @@ dependencies{
     implementation 'org.hamcrest:hamcrest:2.2'
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
     implementation 'commons-net:commons-net:3.8.0'
+    implementation 'org.subethamail:subethasmtp:3.1.7'
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+    implementation 'javax.mail:mail:1.5.0-b01'
+    implementation 'javax.mail:mailapi:1.4.3'
+    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.8'
+
 
 }
 test{
