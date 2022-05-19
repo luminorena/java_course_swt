@@ -24,11 +24,12 @@ public class RegistrationTests extends TestBase {
         long now = System.currentTimeMillis();
         String user = String.format("user%s", now);
         String password = "password";
+        String realname = String.format("realname%s", now);
         String email = String.format("user%s@localhost.localhostdomain", now);
         app.registration().start(user, email);
         List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
-        app.registration().finish(confirmationLink, password);
+        app.registration().finish(confirmationLink, realname, password);
         assertTrue(app.newSession().login(user, password));
 
     }
@@ -40,7 +41,7 @@ public class RegistrationTests extends TestBase {
 
     }
 
-
+   // realname
 
     @AfterMethod (alwaysRun = true)
     public void stopMailServer(){
