@@ -20,9 +20,13 @@ public class ApplicationManager {
 
 
     private String browser;
-    private   RegistrationHelper registrationHelper;
+    private  RegistrationHelper registrationHelper;
     private FtpHelper ftp;
     private JamesHelper jamesHelper;
+    private SessionHelper session;
+    private NavigationHelper goTo;
+    private DbHelper dbHelper;
+    private UsersHelper user;
 
 
     public ApplicationManager(String browser)  {
@@ -35,7 +39,7 @@ public class ApplicationManager {
         properties.load(new FileReader((new File(String.format
                 ("src/test/resources/%s.properties", target)))));
 
-
+        dbHelper = new DbHelper();
     }
 
     public void stop() {
@@ -90,5 +94,31 @@ public class ApplicationManager {
             jamesHelper = new JamesHelper(this);
         }
         return jamesHelper;
+    }
+
+    public SessionHelper session() {
+        if (session == null) {
+            session = new SessionHelper(this);
+        }
+        return session;
+    }
+
+    public NavigationHelper goTo() {
+        if (goTo == null) {
+            goTo = new NavigationHelper(this);
+        }
+        return goTo;
+    }
+
+
+    public UsersHelper user() {
+        if (user == null) {
+            user = new UsersHelper(this);
+        }
+        return user;
+    }
+
+    public DbHelper db() {
+        return dbHelper;
     }
 }

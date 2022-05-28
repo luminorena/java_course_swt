@@ -23,6 +23,13 @@ public class RegistrationHelper extends HelperBase{
             type(By.name("password"), password);
             type(By.name ("password_confirm"), password);
             click(By.xpath("//button[@type='submit']"));
+    }
+
+    public void finishChangingPassword(String confirmationLink, String password) {
+        wd.get(confirmationLink);
+        type(By.name("password"), password);
+        type(By.name ("password_confirm"), password);
+        click(By.xpath("//button[@type='submit']"));
 
     }
 }
