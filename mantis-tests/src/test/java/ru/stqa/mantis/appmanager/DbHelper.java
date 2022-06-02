@@ -22,7 +22,7 @@ public class DbHelper {  private final SessionFactory sessionFactory;
     public Users usersWithoutAdmin() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<UsersData> result = session.createQuery( "from UserData where id <> 1" ).list();
+        List<UsersData> result = session.createQuery( "from UsersData where id <> 1" ).list();
         session.getTransaction().commit();
         session.close();
         return new Users(result);

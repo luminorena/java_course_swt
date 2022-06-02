@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
     @Entity
-    @Table(name="user")
+    @Table(name="mantis_user_table")
 
     public class UsersData {
         @Id
