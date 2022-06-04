@@ -8,12 +8,12 @@ public class NavigationHelper extends HelperBase{
         super(app);
     }
     public void managePage() {
-        click(By.cssSelector("a[href='/manage_overview_page.php']"));
+        click(By.xpath("//div[@id='sidebar']/ul/li[6]/a/span"));
 
     }
 
     public void usersManageTab() {
-        click(By.cssSelector("a[href='/manage_user_page.php']"));
+        click(By.linkText("Manage Users"));
 
     }
 }

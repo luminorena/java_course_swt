@@ -33,7 +33,9 @@ public class ChangePasswordTests extends TestBase {
         app.user().passwordReset();
         List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
         String confirmationLink = app.mail().findConfirmationLink(mailMessages, email);
-        app.registration().finishChangingPassword(confirmationLink, newPassword);
+        long now = System.currentTimeMillis();
+        String realname = String.format("realname%s", now);
+        app.registration().finishChangingPassword(realname, confirmationLink, newPassword);
         assertTrue(app.newSession().login(userName, newPassword));
     }
     @AfterMethod(alwaysRun = true)
@@ -43,3 +45,5 @@ public class ChangePasswordTests extends TestBase {
 
 
 }
+
+

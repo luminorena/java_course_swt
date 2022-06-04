@@ -20,16 +20,18 @@ public class RegistrationHelper extends HelperBase{
     public void finish(String confirmationLink, String realname, String password) {
             wd.get(confirmationLink);
             type(By.name("realname"), realname);
-            type(By.id("password"), password);
-            type(By.id ("password_confirm"), password);
+            type(By.name("password"), password);
+            type(By.name ("password_confirm"), password);
             click(By.xpath("//button[@type='submit']"));
     }
 
-    public void finishChangingPassword(String confirmationLink, String password) {
+    public void finishChangingPassword(String realname, String confirmationLink, String password) {
         wd.get(confirmationLink);
-        type(By.id("password"), password);
-        type(By.id ("password_confirm"), password);
+        type(By.name("realname"), realname);
+        type(By.name("password"), password);
+        type(By.name ("password_confirm"), password);
         click(By.xpath("//button[@type='submit']"));
+
 
     }
 }
