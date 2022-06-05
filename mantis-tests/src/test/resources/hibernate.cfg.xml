@@ -34,7 +34,7 @@
         <property name="hbm2ddl.auto">validate</property>
 
 
-        <mapping class="ru.stqa.model.UsersData"/>
+        <mapping class="soap.stqa.model.UsersData"/>
 
     </session-factory>
 
