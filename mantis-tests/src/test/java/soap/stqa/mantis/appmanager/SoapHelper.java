@@ -56,12 +56,13 @@ public class SoapHelper {
         return mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
 
     }
-
-    public IssueNoteData closeIssue(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+/*
+   public boolean closeIssue(int issueId) throws MalformedURLException, ServiceException, RemoteException {
         MantisConnectPortType mc = getMantisConnect();
-        Calendar calendar = new GregorianCalendar(2022, 6 , 6);
-       // new IssueNoteData().setDate_submitted(calendar);
-        return mc.mc_issue_note_update("administrator", "root",
-                new IssueNoteData().setDate_submitted(calendar));
+      return  mc.mc_issue_update("administrator", "root",
+                BigInteger.valueOf(issueId), new IssueData());
     }
+*/
+
 }
+

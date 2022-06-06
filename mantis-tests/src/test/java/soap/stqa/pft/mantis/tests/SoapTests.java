@@ -28,8 +28,7 @@ public class SoapTests extends TestBase{
                 .withDescription("Test issue description")
                 .withProject(projects.iterator().next());
         Issue created = app.soap().addIssue(issue);
-        // вот тут надо передать закрытый issue
-        // Issue closed = app.soap().closeIssue(issue);
+      //  app.soap().closeIssue(created.getId());
         skipIfNotFixed(created.getId());
         assertEquals(issue.getSummary(), created.getSummary());
     }
@@ -39,7 +38,6 @@ public class SoapTests extends TestBase{
     public void testSkippedIssue() throws MalformedURLException, ServiceException, RemoteException {
         int createdIssueId = 2;
         skipIfNotFixed(createdIssueId);
-
         /*
         В багтрекере создан баг-репорт с номером 2 в статусе закрыт. Тут проверяем,
         если соответствует условию skipIfNotFixed, то тест пропускается.
