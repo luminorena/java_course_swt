@@ -11,4 +11,6 @@ public class GeoIpServiceTests {
                 .getIpLocation("95.29.58.213");
         assertEquals(ipLocation20, "<GeoIP><Country>RU</Country><State>25</State></GeoIP>");
     }
+
+
 }
