@@ -9,8 +9,7 @@ import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
-import java.util.Arrays;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SoapHelper {
@@ -50,7 +49,19 @@ public class SoapHelper {
                 .withDescription(createdIssueData.getDescription())
                 .withProject(new Project()).withId(createdIssueData.getProject().getId().intValue())
                 .withName(createdIssueData.getProject().getName());
+    }
 
+    public IssueData getIssue(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+        MantisConnectPortType mc = getMantisConnect();
+        return mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
 
+    }
+
+    public IssueNoteData closeIssue(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+        MantisConnectPortType mc = getMantisConnect();
+        Calendar calendar = new GregorianCalendar(2022, 6 , 6);
+       // new IssueNoteData().setDate_submitted(calendar);
+        return mc.mc_issue_note_update("administrator", "root",
+                new IssueNoteData().setDate_submitted(calendar));
     }
 }
