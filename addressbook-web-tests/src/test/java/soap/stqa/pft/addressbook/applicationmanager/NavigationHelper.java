@@ -8,6 +8,10 @@ public class NavigationHelper extends HelperBase {
         super(wd);
     }
 
+    public void addNewPage() {
+        click(By.linkText("add new"));
+    }
+
     public void groupPage() {
         if (isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Groups")
