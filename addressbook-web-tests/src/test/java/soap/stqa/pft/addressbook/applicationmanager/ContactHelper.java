@@ -180,10 +180,10 @@ public class ContactHelper extends HelperBase {
     }
     public void deleteContactFromGroup(ContactData contact) {
         selectContactById(contact.getId());
-        initDeletingFromGrop();
+        initDeletingFromGroup();
     }
 
-    private void initDeletingFromGrop() {
+    private void initDeletingFromGroup() {
         wd.findElement(By.name("remove")).click();
     }
 

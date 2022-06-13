@@ -23,7 +23,7 @@ public class GroupData {
     private  String name;
 
 
-    @ManyToMany (mappedBy = "groups")
+    @ManyToMany (mappedBy = "groups", fetch = FetchType.EAGER)
     private Set<ContactData> contacts = new HashSet<ContactData>();
 
     public Set<ContactData> getContacts() {

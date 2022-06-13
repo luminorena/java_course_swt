@@ -40,7 +40,8 @@ public class AddContactToGroupTests extends TestBase{
         Contacts groupContactsAfter = app.db().contactsInGroupByName(group.getName());
 
         assertEquals(contactGroupsAfter.size(), contactGroupsBefore.size() + 1);
-        assertThat(contactGroupsAfter, equalTo(contactGroupsBefore.withAdded(app.db().groupByName(group.getName()))));
+        assertThat(contactGroupsAfter, equalTo(contactGroupsBefore
+                .withAdded(app.db().groupByName(group.getName()))));
 
         assertEquals(groupContactsAfter.size(), groupContactsBefore.size() + 1);
         assertThat(groupContactsAfter, equalTo(groupContactsBefore.withAdded(app.db().contactById(contact.getId()))));
