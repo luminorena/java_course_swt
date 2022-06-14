@@ -24,7 +24,7 @@ public class TestBase {
     @BeforeSuite(alwaysRun = true)
     public void setUp() throws IOException {
         app.init();
-        app.ftp().upload(new File("C:/xampp/htdocs/mantisbt-2.25.4/config/config_inc.php"), "config_inc.php", "config_inc.php.bak");
+        app.ftp().upload(new File(app.getProperty("configPath")), "config_inc.php", "config_inc.php.bak");
     }
 
 
